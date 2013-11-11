@@ -4,7 +4,7 @@ gem "rails", '3.2.13'
 
 gem "exception_notification"
 
-gem "capistrano", "2.15.4"
+gem "capistrano", "~> 3.0.0"
 gem "open4"
 gem "coderay"
 gem "version_fu", :git => "https://github.com/jmckible/version_fu.git"
@@ -13,14 +13,15 @@ gem "devise-encryptable"
 
 gem 'mysql2'
 
-gem 'rvm-capistrano'
-gem 'capistrano-rbenv'
-gem 'capistrano-unicorn', :require => false, :git => 'https://github.com/sosedoff/capistrano-unicorn.git'
+gem 'capistrano-rails'
+gem 'capistrano-bundler'
+gem 'capistrano-rbenv', github: "capistrano/rbenv"
+gem 'capistrano-rvm', '~> 0.0.3'
+
 gem 'whenever', :require => false
 
 group :development do
   gem "thin"
-
   gem "debugger"
   gem "pry"
   gem "pry-rails"

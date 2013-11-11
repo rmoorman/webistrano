@@ -1,9 +1,6 @@
 module Webistrano
   class Deployer
-    # Mix-in the Capistrano behavior
-    include Capistrano::CLI::Execute, Capistrano::CLI::Options
-  
-    # holds the capistrano options, see capistrano/lib/capistrano/cli/options.rb
+    # holds the capistrano options
     attr_accessor :options  
     
     # deployment (AR model) that will be deployed

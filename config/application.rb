@@ -2,7 +2,7 @@ require File.expand_path('../boot', __FILE__)
 
 # Pick the frameworks you want:
 require 'open4'
-require 'capistrano/cli'
+require 'sshkit'
 require 'capistrano/configuration'
 require 'rails/all'
 
