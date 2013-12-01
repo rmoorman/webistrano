@@ -8,9 +8,6 @@ class Project < ActiveRecord::Base
   
   after_create :create_template_defaults
   
-  attr_accessible :id, :name, :description, :template
-  
-  
   # returns a string with all custom tasks to be loaded by the Capistrano config
   def tasks
     ProjectConfiguration.templates[template]::TASKS

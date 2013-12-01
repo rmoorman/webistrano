@@ -22,8 +22,6 @@ class Deployment < ActiveRecord::Base
   validate :guard_readiness_of_stage, :on => :create
   
   serialize :excluded_host_ids
-  
-  attr_accessible :task, :prompt_config, :description, :excluded_host_ids, :override_locking
     
   # given configuration hash on create in order to satisfy prompt configurations
   attr_accessor :prompt_config

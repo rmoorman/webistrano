@@ -11,8 +11,6 @@ class Role < ActiveRecord::Base
   validates :no_release, :presence => true, :inclusion => {:in => 0..1}
   validates :no_symlink, :presence => true, :inclusion => {:in => 0..1}
   
-  attr_accessible :name, :primary, :host_id, :no_release, :no_symlink, :ssh_port, :custom_name
-  
   attr_accessor :custom_name
   
   before_validation :set_name_from_custom_name

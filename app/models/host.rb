@@ -5,8 +5,6 @@ class Host < ActiveRecord::Base
   validates :name, :uniqueness => true, :presence => true, :length => {:maximum => 250}
   validate :guard_valid_hostname_or_ip
   
-  attr_accessible :name
-  
   before_validation :strip_whitespace
  
 private

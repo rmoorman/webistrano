@@ -1,13 +1,10 @@
 class ConfigurationParameter < ActiveRecord::Base
-  attr_accessible :name, :value, :prompt_on_deploy, :project_id
-  
   validates :name, :presence => true
   validates :prompt_on_deploy, :inclusion => {:in => 0..1}
   validate :custom_validations
   
   before_validation :empty_value_if_deploy_is_set
-  
-  
+
   def prompt?
     self.prompt_on_deploy == 1
   end

@@ -4,8 +4,6 @@ class Recipe < ActiveRecord::Base
   validates :name, :uniqueness => true, :presence => true, :length => {:maximum => 250}
   validates :body, :presence => true
   validate :check_syntax
-
-  attr_accessible :name, :body, :description, :version
   
   scope :ordered, :order => "name ASC"
   
