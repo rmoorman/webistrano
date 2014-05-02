@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :deployments, :dependent => :nullify, :order => 'created_at DESC'
+  has_many :deployments, -> { order 'created_at DESC' }, :dependent => :nullify
 
   validates :login, :presence => true, :uniqueness => {:case_sensitive => false}, :length => {:within => 3..40}
   validate :guard_last_admin, :on => :update
@@ -12,8 +12,6 @@ class User < ActiveRecord::Base
   scope :enabled,  where(:disabled_at => nil)
   scope :disabled, where("disabled_at IS NOT NULL")
   scope :admins,   where(:admin => true, :disabled_at => nil)
-
-
 
   def name
     login

@@ -1,17 +1,21 @@
 source "https://rubygems.org"
 
-gem "rails", '4.0.1'
+gem "rails", '~> 4.1.0'
 
 gem "exception_notification"
 
-gem "capistrano", "~> 3.0.0"
+gem "capistrano", "~> 3.2.1"
 gem "open4"
 gem "coderay"
 gem "version_fu", :git => "https://github.com/jmckible/version_fu.git"
-gem "devise", "3.0.3"
+gem "devise", "~> 3.2.4"
 gem "devise-encryptable"
 
 gem 'mysql2'
+
+gem "jquery-rails"
+gem "uglifier"
+gem 'therubyracer'
 
 gem 'capistrano-rails'
 gem 'capistrano-bundler'
@@ -25,6 +29,7 @@ group :development do
   gem "debugger"
   gem "pry"
   gem "pry-rails"
+  gem "pry-debugger"
 end
 
 group :test do
@@ -36,12 +41,6 @@ end
 
 group :production do
   gem "unicorn"
-end
-
-group :assets do
-  gem "jquery-rails"
-  gem "uglifier"
-  gem 'therubyracer'
 end
 
 if File.exists?('config/Gemfile.extras')
