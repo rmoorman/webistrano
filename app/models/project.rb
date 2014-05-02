@@ -1,7 +1,7 @@
 class Project < ActiveRecord::Base
-  has_many :stages, :dependent => :destroy, :order => 'name ASC'
+  has_many :stages, -> { order 'name ASC' }, :dependent => :destroy
   has_many :deployments, :through => :stages
-  has_many :configuration_parameters, :dependent => :destroy, :class_name => "ProjectConfiguration", :order => 'name ASC'
+  has_many :configuration_parameters, -> { order 'name ASC' }, :dependent => :destroy, :class_name => "ProjectConfiguration"
   
   validates :name, :uniqueness => true, :presence => true, :length => {:maximum => 250}
   validates :template, :inclusion => {:in => ProjectConfiguration.templates.keys}

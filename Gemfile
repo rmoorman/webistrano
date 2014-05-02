@@ -19,8 +19,8 @@ gem 'therubyracer'
 
 gem 'capistrano-rails'
 gem 'capistrano-bundler'
-gem 'capistrano-rbenv', github: "capistrano/rbenv"
-gem 'capistrano-rvm', '~> 0.0.3'
+gem 'capistrano-rbenv'
+gem 'capistrano-rvm'
 
 gem 'whenever', :require => false
 

@@ -1,6 +1,5 @@
 ENV["RAILS_ENV"] = "test"
 
-require "test/unit"
 require "mocha/setup"
 require "minitest/reporters"
 MiniTest::Reporters.use!

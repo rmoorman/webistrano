@@ -1,10 +1,10 @@
 class Stage < ActiveRecord::Base  
   belongs_to :project
   has_and_belongs_to_many :recipes
-  has_many :roles, :dependent => :destroy, :order => "name ASC"
-  has_many :hosts, :through => :roles, :uniq => true
-  has_many :configuration_parameters, :dependent => :destroy, :class_name => "StageConfiguration", :order => "name ASC"
-  has_many :deployments, :dependent => :destroy, :order => "created_at DESC"
+  has_many :roles, -> { order 'name ASC' }, :dependent => :destroy
+  has_many :hosts, -> { uniq }, :through => :roles
+  has_many :configuration_parameters, -> { order 'name ASC' }, :dependent => :destroy, :class_name => "StageConfiguration"
+  has_many :deployments, -> { order 'created_at DESC' }, :dependent => :destroy
   belongs_to :locking_deployment, :class_name => 'Deployment', :foreign_key => :locked_by_deployment_id 
   
   validates :name, :presence => true, :uniqueness => {:scope => :project_id}, :length => {:maximum => 250}
