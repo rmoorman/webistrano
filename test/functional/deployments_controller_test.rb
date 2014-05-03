@@ -33,7 +33,7 @@ class DeploymentsControllerTest < ActionController::TestCase
 
     post :create, :deployment => { :host_ids => host_ids, :task => 'deploy:default', :description => 'update to newest' }, :project_id => @project.id, :stage_id => @stage.id
     assert_equal 1, Deployment.count
-    assert_equal @user, Deployment.find(:all).last.user
+    assert_equal @user, Deployment.last.user
 
     assert_redirected_to project_stage_deployment_path(@project, @stage, assigns(:deployment))
   end
@@ -99,7 +99,7 @@ class DeploymentsControllerTest < ActionController::TestCase
     post :create, :deployment => { :host_ids => host_ids, :task => 'deploy:default', :description => 'update to newest', :prompt_config => {} }, :project_id => @project.id, :stage_id => @stage.id
 
     assert_equal 1, Deployment.count
-    deployment = Deployment.find(:first)
+    deployment = Deployment.first
     assert_equal [host_down], deployment.excluded_hosts
     assert_equal [@role], deployment.deploy_to_roles
   end

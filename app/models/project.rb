@@ -19,7 +19,7 @@ class Project < ActiveRecord::Base
   end
   
   def recent_deployments(limit=3)
-    self.deployments.find(:all, :limit => limit, :order => 'deployments.created_at DESC')
+    self.deployments.order('deployments.created_at DESC').limit(limit).all
   end
   
   def prepare_cloning(other)

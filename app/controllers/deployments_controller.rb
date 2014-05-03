@@ -50,7 +50,7 @@ class DeploymentsController < ApplicationController
 
   # GET /projects/1/stages/1/deployments/latest
   def latest
-    @deployment = @stage.deployments.find(:first, :order => "created_at desc")
+    @deployment = @stage.deployments.order('created_at DESC').all
     if @deployment
       redirect_to([@project, @stage, @deployment])
     else
@@ -60,7 +60,7 @@ class DeploymentsController < ApplicationController
 
   # POST /projects/1/stages/1/deployments/1/cancel
   def cancel
-    @deployment = @stage.deployments.find(:first, :order => "created_at desc")
+    @deployment = @stage.deployments.order('created_at DESC').first
 
     begin
       @deployment.cancel!

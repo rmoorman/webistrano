@@ -6,13 +6,13 @@ class ProjectsController < ApplicationController
 
   # GET /projects/dashboard
   def dashboard
-    @deployments = Deployment.find(:all, :limit => 10, :order => 'created_at DESC')
+    @deployments = Deployment.order('created_at DESC').limit(10).all
     respond_with(@deployments)
   end
 
   # GET /projects
   def index
-    @projects = Project.find(:all, :order => 'name ASC')
+    @projects = Project.order('name ASC').all
     respond_with(@projects)
   end
 

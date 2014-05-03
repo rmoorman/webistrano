@@ -4,7 +4,7 @@ class HostsController < ApplicationController
 
   # GET /hosts
   def index
-    @hosts = Host.find(:all, :order => 'name ASC')
+    @hosts = Host.order('name ASC').all
     respond_with(@hosts)
   end
 

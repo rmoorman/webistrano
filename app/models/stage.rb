@@ -91,7 +91,7 @@ class Stage < ActiveRecord::Base
   end
   
   def recent_deployments(limit=3)
-    self.deployments.find(:all, :limit => limit, :order => 'deployments.created_at DESC')
+    self.deployments.order('deployments.created_at DESC').limit(limit).all
   end
   
   # returns a better form of the stage name for use inside Capistrano recipes

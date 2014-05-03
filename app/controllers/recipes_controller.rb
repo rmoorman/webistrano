@@ -4,7 +4,7 @@ class RecipesController < ApplicationController
 
   # GET /recipes
   def index
-    @recipes = Recipe.find(:all)
+    @recipes = Recipe.all
 
     respond_to do |format|
       format.html # index.rhtml
