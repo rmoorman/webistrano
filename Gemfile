@@ -33,6 +33,7 @@ group :development do
 end
 
 group :test do
+  gem "sqlite3"
   gem "mocha", :require => false
   gem "factory_girl_rails"
   gem "database_cleaner"
