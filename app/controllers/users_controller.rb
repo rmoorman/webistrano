@@ -48,7 +48,7 @@ class UsersController < ApplicationController
       params[:user].delete(:admin)
     end
 
-    if @user.update_attributes(params[:user])
+    if @user.update user_params
       flash[:notice] = 'User was successfully updated.'
       respond_with(@user, :location => @user)
     else
@@ -93,7 +93,7 @@ class UsersController < ApplicationController
 
 private
   def user_params
-    params.require(:user).permit(:login,:email,:password,:password_confirmation,:time_zone,:admin)
+    params.require(:user).permit(:login, :email, :password, :password_confirmation, :time_zone, :admin)
   end
 
   def ensure_admin_or_my_entry

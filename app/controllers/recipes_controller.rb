@@ -36,7 +36,7 @@ class RecipesController < ApplicationController
 
   # POST /recipes
   def create
-    @recipe = Recipe.new(params[:recipe] || {})
+    @recipe = Recipe.new(recipe_params || {})
 
     respond_to do |format|
       if @recipe.save
@@ -55,7 +55,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
 
     respond_to do |format|
-      if @recipe.update_attributes(params[:recipe] || {})
+      if @recipe.update_attributes(recipe_params || {})
         flash[:notice] = 'Recipe was successfully updated.'
         format.html { redirect_to recipe_url(@recipe) }
         format.xml  { head :ok }
@@ -88,6 +88,10 @@ class RecipesController < ApplicationController
   end
 
 private
+
+  def recipe_params
+    params.require(:recipe).permit(:name, :body)
+  end
 
   def find_recipe_with_version
     @recipe = Recipe.find(params[:id])

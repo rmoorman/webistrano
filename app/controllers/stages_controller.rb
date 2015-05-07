@@ -58,7 +58,7 @@ class StagesController < ApplicationController
   def update
     @stage = current_project.stages.find(params[:id])
 
-    if @stage.update_attributes(params[:stage])
+    if @stage.update stage_params
       flash[:notice] = 'Stage was successfully updated.'
       respond_with(@stage, :location => [current_project, @stage])
     else
@@ -105,6 +105,11 @@ class StagesController < ApplicationController
   end
 
 private
+
+  def stage_params
+    params.require(:stage).permit(:name)
+  end
+
   def load_clone_original
     if params[:clone]
       @original = Stage.unscoped.find(params[:clone])
@@ -112,4 +117,5 @@ private
       false
     end
   end
+
 end

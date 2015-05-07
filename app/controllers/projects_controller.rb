@@ -55,7 +55,7 @@ class ProjectsController < ApplicationController
   def update
     @project = Project.find(params[:id])
 
-    if @project.update_attributes(params[:project])
+    if @project.update project_params
       flash[:notice] = 'Project was successfully updated.'
       respond_with(@project, :location => @project)
     else
@@ -72,6 +72,10 @@ class ProjectsController < ApplicationController
   end
 
 private
+
+  def project_params
+    params.require(:project).permit(:name, :template)
+  end
 
   def load_templates
     @templates = ProjectConfiguration.templates.sort.collect do |key, val|

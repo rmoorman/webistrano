@@ -22,7 +22,7 @@ class ProjectConfigurationsController < ApplicationController
 
   # POST /projects/1/project_configurations
   def create
-    @configuration = current_project.configuration_parameters.build(params[:configuration])
+    @configuration = current_project.configuration_parameters.build configuration_params
 
     if @configuration.save
       flash[:notice] = 'ProjectConfiguration was successfully created.'
@@ -36,7 +36,7 @@ class ProjectConfigurationsController < ApplicationController
   def update
     @configuration = current_project.configuration_parameters.find(params[:id])
 
-    if @configuration.update_attributes(params[:configuration])
+    if @configuration.update configuration_params
       flash[:notice] = 'ProjectConfiguration was successfully updated.'
       respond_with(@configuration, :location => current_project)
     else
@@ -51,5 +51,11 @@ class ProjectConfigurationsController < ApplicationController
 
     flash[:notice] = 'ProjectConfiguration was successfully deleted.'
     respond_with(@configuration, :location => current_project)
+  end
+
+  private
+
+  def configuration_params
+    params.require(:configuration).permit(:name, :value)
   end
 end

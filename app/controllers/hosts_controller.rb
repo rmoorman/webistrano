@@ -46,7 +46,7 @@ class HostsController < ApplicationController
   def update
     @host = Host.find(params[:id])
 
-    if @host.update_attributes(params[:host])
+    if @host.update host_params
       flash[:notice] = 'Host was successfully updated.'
       respond_with(@host, :location => @host)
     else
@@ -60,5 +60,11 @@ class HostsController < ApplicationController
     @host.destroy
 
     redirect_to hosts_path, :notice => 'Host was successfully deleted.'
+  end
+
+  private
+
+  def host_params
+    params.require(:host).permit(:name)
   end
 end

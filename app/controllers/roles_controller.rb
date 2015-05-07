@@ -28,7 +28,7 @@ class RolesController < ApplicationController
       :name     => params[:role][:name],
       :host_id  => params[:role][:host_id],
       :stage_id => @stage.id
-    ).first_or_create(params[:role])
+    ).first_or_create role_params
 
     if @role
       @role.save
@@ -43,7 +43,7 @@ class RolesController < ApplicationController
   def update
     @role = @stage.roles.find(params[:id])
 
-    if @role.update_attributes(params[:role])
+    if @role.update role_params
       flash[:notice] = 'Role was successfully updated.'
       respond_with(@role, :location => [@project, @stage])
     else
@@ -60,6 +60,10 @@ class RolesController < ApplicationController
   end
   
 private
+
+  def role_params
+    params.require(:role).permit(:name, :host_id)
+  end
 
   def load_host_choices
     @host_choices = Host.order("name ASC").collect {|h| [ h.name, h.id ] }

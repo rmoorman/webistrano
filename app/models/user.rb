@@ -9,8 +9,8 @@ class User < ActiveRecord::Base
   validates :login, :presence => true, :uniqueness => {:case_sensitive => false}, :length => {:within => 3..40}
   validate :guard_last_admin, :on => :update
 
-  scope :enabled,  where(:disabled_at => nil)
-  scope :disabled, where("disabled_at IS NOT NULL")
+  scope :enabled,  -> { where(:disabled_at => nil) }
+  scope :disabled, -> { where("disabled_at IS NOT NULL") }
   scope :admins,   -> { where(:admin => true, :disabled_at => nil) }
 
   def name
