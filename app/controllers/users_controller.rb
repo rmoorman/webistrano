@@ -17,7 +17,7 @@ class UsersController < ApplicationController
 
   # POST /users
   def create
-    @user = User.new(params[:user])
+    @user = User.new user_params
 
     if @user.save
       flash[:notice] = "Account created"
@@ -92,7 +92,10 @@ class UsersController < ApplicationController
   end
 
 private
-  
+  def user_params
+    params.require(:user).permit(:login,:email,:password,:password_confirmation,:time_zone,:admin)
+  end
+
   def ensure_admin_or_my_entry
     if current_user.admin? || current_user.id == User.find(params[:id]).id
       return true
