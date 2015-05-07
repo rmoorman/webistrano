@@ -141,7 +141,7 @@ class Deployment < ActiveRecord::Base
   # will deploy to. This computed out of the list
   # of given roles and the excluded hosts
   def deploy_to_roles(base_roles=self.roles)
-    base_roles.dup.delete_if{|role| self.excluded_hosts.include?(role.host) }
+    base_roles.dup.to_ary.delete_if{|role| self.excluded_hosts.include?(role.host) }
   end
   
   # a list of all excluded hosts for this deployment
@@ -191,8 +191,8 @@ protected
     end
 
     transaction do
-      stage = Stage.find(self.stage_id, :lock => true)
-      stage.unlock
+      stage = Stage.lock.find_by(:id => self.id)
+      stage.unlock if stage
       self.status = status
       self.completed_at = Time.now
       self.save!

@@ -24,8 +24,8 @@ class Stage < ActiveRecord::Base
   
   # returns an array of ConfigurationParameters that is a result of the projects configuration overridden by the stage config 
   def effective_configuration(key=nil) 
-    project_configs = self.project.configuration_parameters.dup
-    my_configs = self.configuration_parameters.dup
+    project_configs = self.project.configuration_parameters.dup.to_ary
+    my_configs = self.configuration_parameters.dup.to_ary
     
     cleaned_project_configs = project_configs.delete_if{|x| my_configs.collect(&:name).collect(&:to_s).include?(x.name.to_s) }
     
@@ -113,15 +113,19 @@ class Stage < ActiveRecord::Base
   end
     
   def lock
-    other_self = self.class.find(self.id, :lock => true)
-    other_self.update_column(:locked, 1)
+    other_self = self.class.find_by(self.id, :lock => true)
+    if other_self
+      other_self.update_column(:locked, 1)
+    end
     self.reload
   end
   
   def unlock
-    other_self = self.class.find(self.id, :lock => true)
-    other_self.update_column(:locked, 0)
-    other_self.update_column(:locked_by_deployment_id, nil)
+    other_self = self.class.find_by(self.id, :lock => true)
+    if other_self
+      other_self.update_column(:locked, 0)
+      other_self.update_column(:locked_by_deployment_id, nil)
+    end
     self.reload
   end
   

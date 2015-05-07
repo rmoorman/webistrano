@@ -50,9 +50,9 @@ class DeploymentsController < ApplicationController
 
   # GET /projects/1/stages/1/deployments/latest
   def latest
-    @deployment = @stage.deployments.order('created_at DESC').all
+    @deployment = @stage.deployments.order('created_at DESC').first
     if @deployment
-      redirect_to([@project, @stage, @deployment])
+      redirect_to "/projects/#{@project.id}/stages/#{@stage.id}/deployments/#{@deployment.id}"
     else
       render :status => :not_found, :nothing => true
     end
