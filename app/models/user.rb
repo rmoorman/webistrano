@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
 
   scope :enabled,  where(:disabled_at => nil)
   scope :disabled, where("disabled_at IS NOT NULL")
-  scope :admins,   where(:admin => true, :disabled_at => nil)
+  scope :admins,   -> { where(:admin => true, :disabled_at => nil) }
 
   def name
     login
