@@ -142,7 +142,7 @@ class RecipesControllerTest < ActionController::TestCase
     
     @recipe.update_attributes!(:body => "do_something :else")
     @recipe.update_attributes!(:body => "do_something :other_than => :else")
-    get :show, :id => @recipe.id, :version => @recipe.version + 1
+    get :show, :id => @recipe.id, :version => @recipe.versions.length
     assert_equal "do_something :other_than => :else", assigns["recipe"].body
   end
 end

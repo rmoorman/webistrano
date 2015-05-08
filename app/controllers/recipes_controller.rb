@@ -98,9 +98,11 @@ private
 
     unless params[:version].blank?
       version = params[:version].to_i
-      recipe_version = @recipe.versions[version].next
-      unless recipe_version.blank? || recipe_version.reify.blank?
-        @recipe = recipe_version.reify
+      if version < @recipe.versions.length
+        recipe_version = @recipe.versions[version].next
+        unless recipe_version.blank? || recipe_version.reify.blank?
+          @recipe = recipe_version.reify
+        end
       end
     end
 
