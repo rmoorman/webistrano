@@ -7,8 +7,7 @@ class Recipe < ActiveRecord::Base
   
   scope :ordered, :order => "name ASC"
   
-  # hack to silence migration errors when the original table is not there
-  version_fu rescue nil
+  has_paper_trail
  
 private
 

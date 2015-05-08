@@ -97,12 +97,10 @@ private
     @recipe = Recipe.find(params[:id])
 
     unless params[:version].blank?
-      recipe_version = @recipe.find_version(params[:version])
-      if recipe_version
-        @recipe.version = recipe_version.version
-        @recipe.name = recipe_version.name
-        @recipe.description = recipe_version.description
-        @recipe.body = recipe_version.body
+      version = params[:version].to_i
+      recipe_version = @recipe.versions[version].next
+      unless recipe_version.blank? || recipe_version.reify.blank?
+        @recipe = recipe_version.reify
       end
     end
 

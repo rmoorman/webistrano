@@ -7,11 +7,11 @@ gem "exception_notification"
 gem "capistrano", "~> 3.2.1"
 gem "open4"
 gem "coderay"
-gem "version_fu", :git => "https://github.com/jmckible/version_fu.git"
+gem 'paper_trail', '~> 4.0.0.beta'
 gem "devise", "~> 3.2.4"
 gem "devise-encryptable"
 
-gem 'mysql2'
+gem 'mysql2', '>= 0.3.12b4'
 
 gem "jquery-rails"
 gem "uglifier"
