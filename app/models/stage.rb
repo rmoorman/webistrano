@@ -138,7 +138,7 @@ class Stage < ActiveRecord::Base
       raise ArgumentError, "deployment does not belong to stage"
     end
 
-    other_self = self.class.find(self.id, :lock => true)
+    other_self = self.class.lock.find(self.id)
     other_self.update_column(:locked_by_deployment_id, deployment.id)
     self.reload
   end
