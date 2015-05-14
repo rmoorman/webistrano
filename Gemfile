@@ -26,10 +26,14 @@ gem 'whenever', :require => false
 
 group :development do
   gem "thin"
-  gem "debugger"
   gem "pry"
   gem "pry-rails"
-  gem "pry-debugger"
+  if RUBY_VERSION >= '2.0.0'
+    gem 'pry-byebug'
+  else
+    gem "debugger"
+    gem "pry-debugger"
+  end
 end
 
 group :test do
