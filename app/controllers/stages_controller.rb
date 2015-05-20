@@ -45,7 +45,7 @@ class StagesController < ApplicationController
   # POST /projects/1/stages
   def create
     @stage = Stage.unscoped.where(
-      params[:stage].merge(:project_id => current_project.id)
+      stage_params.merge(:project_id => current_project.id)
     ).first_or_create
     @stage.clone(@original) if load_clone_original
     @stage.save

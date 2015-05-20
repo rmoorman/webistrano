@@ -32,7 +32,7 @@ class HostsController < ApplicationController
 
   # POST /hosts
   def create
-    @host = Host.unscoped.where(params[:host]).first_or_create
+    @host = Host.unscoped.where(host_params).first_or_create
 
     if @host
       flash[:notice] = 'Host was successfully created.'
