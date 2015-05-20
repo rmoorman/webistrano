@@ -43,7 +43,7 @@ class ProjectsController < ApplicationController
 
   # POST /projects
   def create
-    @project = Project.unscoped.where(params[:project]).first_or_create
+    @project = Project.unscoped.where(project_params).first_or_create
     @project.clone(@original) if load_clone_original
     @project.save
 
