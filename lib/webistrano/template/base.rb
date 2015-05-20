@@ -3,8 +3,8 @@ module Webistrano
     module Base
       CONFIG = {
         :application => 'your_app_name',
-        :scm => 'subversion',
-        :deploy_via => ':checkout',
+        :scm => 'git',
+        :deploy_via => ':clone',
         :scm_username => 'your_SVN_user',
         :scm_password => 'your_SVN_password',
         :user => 'deployment_user(SSH login)',
@@ -12,7 +12,7 @@ module Webistrano
         :runner => 'user to run as with sudo',
         :use_sudo => 'true',
         :deploy_to => '/path/to/deployment_base',
-        :repository => 'https://svn.example.com/project/trunk'
+        :repository => 'https://github.com/user/project/trunk'
       }.freeze
       
       DESC = <<-'EOS'
