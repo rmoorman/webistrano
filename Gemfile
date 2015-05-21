@@ -13,6 +13,9 @@ gem "devise-encryptable"
 
 gem 'mysql2', '>= 0.3.12b4'
 
+gem 'slim-rails'
+gem 'coffee-script'
+
 gem "jquery-rails"
 gem "uglifier"
 gem 'therubyracer'
