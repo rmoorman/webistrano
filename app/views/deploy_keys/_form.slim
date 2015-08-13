@@ -1,0 +1,26 @@
+.control-group
+  = form.label t("deploy_key.name2"), :class => "control-label"
+  .controls
+    = form.text_field :name, :style => 'width: 330px'
+
+.control-group
+  = form.label t("deploy_key.description"), :class => "control-label"
+  .controls
+    = form.text_area :description, :class => "text_field", :style => "width:663px; height: 100px;"
+
+.control-group
+  = form.label t("deploy_key.auto_generate"), :class => "control-label"
+  .controls
+    = check_box :control, :auto_generate, { :class => "deploy_key_auto_generate", :checked => true }
+
+.deploy-key-input style="display:none"
+  .control-group
+    = form.label t("deploy_key.secret_key"), :class => "control-label"
+    .controls
+      = form.text_area :secret_key, :class => "text_field", :style => "width:663px; height: 100px;"
+
+  .control-group
+    = form.label t("deploy_key.public_key"), :class => "control-label"
+    .controls
+      = form.text_area :public_key, :class => "text_field", :style => "width:663px; height: 100px;"
+

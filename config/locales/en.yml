@@ -137,6 +137,15 @@ en:
     roles: "Roles"
     deployments_none: "No deployments for this host."
 
+  deploy_keys: "Deploy Keys"
+  deploy_key:
+    title: "Deploy key"
+    none: "No deploy key created yet."
+    new: "New deploy key"
+    edit: "Edit deploy key"
+    name: "Deploy key name (Name to identify the key)"
+    description: "Description"
+
   recipes: "Recipes"
   recipe:
     none: "No recipe created yet."

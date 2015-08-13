@@ -1,6 +1,7 @@
 source "https://rubygems.org"
 
 gem "rails", '~> 4.1.0'
+gem "turbolinks"
 
 gem "exception_notification"
 
@@ -14,12 +15,17 @@ gem "devise-encryptable"
 gem 'mysql2', '>= 0.3.12b4'
 
 gem 'slim-rails'
-gem 'coffee-script'
+gem 'sass-rails',   '~> 4.0.3'
+gem 'coffee-rails', '~> 4.0.0'
+#gem 'coffee-script-source', '1.8.0'
 
 gem "jquery-rails"
-gem "uglifier"
-gem 'therubyracer'
+gem "jquery-turbolinks"
+gem "jquery-ui-rails"
+gem "uglifier", '>= 1.3.0'
+gem 'therubyracer', platforms: :ruby
 
+# capistrano
 gem 'capistrano-rails'
 gem 'capistrano-bundler'
 gem 'capistrano-rbenv'
@@ -27,7 +33,11 @@ gem 'capistrano-rvm'
 
 gem 'whenever', :require => false
 
+# other data
+gem 'sshkey'
+
 group :development do
+  gem 'spring'
   gem "thin"
   gem "pry"
   gem "pry-rails"
@@ -37,6 +47,9 @@ group :development do
     gem "debugger"
     gem "pry-debugger"
   end
+  # better errors
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :test do

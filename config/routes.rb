@@ -30,6 +30,8 @@ Webistrano::Application.routes.draw do
 
   resources :hosts
 
+  resources :deploy_keys
+
   resources :recipes do
     collection do
       get :preview

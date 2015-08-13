@@ -138,6 +138,25 @@ ja:
     roles: "ロール数"
     deployments_none: "このホストはまだデプロイされたことがありません."
 
+  deploy_keys: "デプロイキー一覧"
+  deploy_key:
+    title: "デプロイキー"
+    none: "デプロイキーがありません."
+    new: "デプロイキー作成"
+    edit: "デプロイキー編集"
+    name: "デプロイキー名"
+    name2: "デプロイキー名 (どこのキーかわかる名前等)"
+    description: "キーの説明"
+    secret_key: "秘密鍵"
+    public_key: "公開鍵"
+    public_key2: "公開鍵 (相手サーバへ設置する鍵)"
+    use_host: "利用先ホスト"
+    finger_print: "フィンガープリント"
+    auto_generate: "秘密鍵を自動生成する"
+    create: "作成する"
+    update: "更新する"
+    back_to: "デプロイキー一覧に戻る"
+
   recipes: "レシピ一覧"
   recipe:
     title: "レシピ"

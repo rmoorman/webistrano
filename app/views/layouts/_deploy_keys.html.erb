@@ -1,0 +1,25 @@
+<div id="deploy_keys_open_content" style="<%= show_if_opened(status) %>">
+  <% if DeployKey.count > 0 %>
+    <% for deploy_key in DeployKey.order('name ASC').all %>
+      <a href="<%= deploy_key_path(deploy_key) %>" class="menu_link <%= active_link_class(deploy_key) %>" title="<%= deploy_key.name %>">
+  	    <div class="menu_link_title">
+  	      <%= deploy_key.name %>
+  	    </div>
+      </a>
+    <% end %>
+  <% else %>
+    <div class="menu_item"><%= t("deploy_key.none") %></div>
+    <a href="<%= new_deploy_key_path %>" class="menu_link  menu_link_create">
+	    <div class="menu_link_title">
+        <%= t("deploy_key.new") %>
+	    </div>
+	  </a>
+  <% end %>
+</div>
+<div id="deploy_keys_closed_content" style="<%=h show_if_closed(status) %>">
+  <a href="javascript:App.open_menu_box('deploy_keys')" class="menu_link  menu_link_create">
+	  <div class="menu_link_title">
+	    <%= pluralize(DeployKey.count, 'deploy_key')%>
+	  </div>
+  </a>
+</div>  

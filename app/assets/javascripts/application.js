@@ -1,29 +1,18 @@
+// This is a manifest file that'll be compiled into application.js, which will include all the files
+// listed below.
+//
+// Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
+// or vendor/assets/javascripts of plugins, if any, can be referenced here using a relative path.
+//
+// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
+// compiled file.
+//
+// Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
+// about supported directives.
+//
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
+//= require_tree .
+//= require turbolinks
 
-/**
- * @const
- */
-var App = {};
-
-$(function() {
-
-    /**
-     * menu box
-     */
-    App.open_menu_box = function(id) {
-        $('#' + id + '_arrow_right').hide();
-        $('#' + id + '_arrow_down').show();
-
-        $('#' + id + '_open_content').show();
-        $('#' + id + '_closed_content').hide();
-    };
-    App.close_menu_box = function(id) {
-        $('#' + id + '_arrow_right').show();
-        $('#' + id + '_arrow_down').hide();
-
-        $('#' + id + '_open_content').hide();
-        $('#' + id + '_closed_content').show();
-    };
-
-});

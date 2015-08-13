@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150508100348) do
+ActiveRecord::Schema.define(version: 20150629031444) do
 
   create_table "configuration_parameters", force: true do |t|
     t.string   "name"
@@ -22,6 +22,18 @@ ActiveRecord::Schema.define(version: 20150508100348) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "prompt_on_deploy", default: 0
+  end
+
+  create_table "deploy_keys", force: true do |t|
+    t.string   "name"
+    t.text     "secret"
+    t.text     "public"
+    t.string   "passphrase"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "description"
+    t.text     "secret_key"
+    t.text     "public_key"
   end
 
   create_table "deployments", force: true do |t|

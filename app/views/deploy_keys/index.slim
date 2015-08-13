@@ -1,0 +1,32 @@
+.breadcrumb
+  b
+    = t("deploy_keys")
+
+.page_title
+  - @page_title = t("deploy_keys")
+  h2
+    = t("deploy_keys")
+
+fieldset.fieldset
+  legend
+    = pluralize( DeployKey.count, 'DeployKey' ) + " "
+    | listed
+  
+  table.sortable
+    thead
+      tr
+        th width="20%"
+          = t("deploy_key.name")
+        th width="20%"
+          = t("deploy_key.use_host")
+        th width="60%"
+          = t("deploy_key.finger_print")
+    - @deploy_keys.each do |deploy_key|
+      tr 
+        td
+          = deploy_key.name
+
+  - if current_user.admin?
+    br
+    = link_to t("deploy_key.new"), new_deploy_key_path, :class => 'arrow_link'
+

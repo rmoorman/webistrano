@@ -14,6 +14,13 @@
 
 <%= render(:partial => 'layouts/menu_box',
            :locals => {
+             :box_type => 'deploy_keys', 
+             :status => controller_in_use_or(DeployKeysController, :closed, DeployKey), 
+             :path => deploy_keys_path
+           })%>
+
+<%= render(:partial => 'layouts/menu_box',
+           :locals => {
              :box_type => 'recipes', 
              :status => controller_in_use_or(RecipesController, :closed, Recipe), 
              :path => recipes_path
