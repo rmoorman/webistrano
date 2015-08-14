@@ -35,6 +35,7 @@ gem 'whenever', :require => false
 
 # other data
 gem 'sshkey'
+gem 'annotate'
 
 group :development do
   gem 'spring'

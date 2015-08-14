@@ -1,3 +1,13 @@
+# == Schema Information
+#
+# Table name: hosts
+#
+#  id         :integer          not null, primary key
+#  name       :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 class Host < ActiveRecord::Base
   has_many :roles, -> { uniq }, :dependent => :destroy
   has_many :stages, -> { uniq }, :through => :roles # XXX uniq does not seem to work! You get all stages, even doubles

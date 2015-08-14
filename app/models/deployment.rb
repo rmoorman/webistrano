@@ -1,3 +1,22 @@
+# == Schema Information
+#
+# Table name: deployments
+#
+#  id                :integer          not null, primary key
+#  task              :string(255)
+#  log               :text
+#  stage_id          :integer
+#  created_at        :datetime
+#  updated_at        :datetime
+#  completed_at      :datetime
+#  description       :text
+#  user_id           :integer
+#  excluded_host_ids :string(255)
+#  revision          :string(255)
+#  pid               :integer
+#  status            :string(255)      default("running")
+#
+
 class Deployment < ActiveRecord::Base
   DEPLOY_TASKS    = ['deploy', 'deploy:default', 'deploy:migrations']
   SETUP_TASKS     = ['deploy:setup']

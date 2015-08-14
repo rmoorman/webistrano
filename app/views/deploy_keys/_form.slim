@@ -15,9 +15,9 @@
 
 .deploy-key-input style="display:none"
   .control-group
-    = form.label t("deploy_key.secret_key"), :class => "control-label"
+    = form.label t("deploy_key.private_key"), :class => "control-label"
     .controls
-      = form.text_area :secret_key, :class => "text_field", :style => "width:663px; height: 100px;"
+      = form.text_area :private_key, :class => "text_field", :style => "width:663px; height: 100px;"
 
   .control-group
     = form.label t("deploy_key.public_key"), :class => "control-label"

@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: recipes
+#
+#  id          :integer          not null, primary key
+#  name        :string(255)
+#  description :text
+#  body        :text
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
 require 'test_helper'
 
 class RecipeTest < ActiveSupport::TestCase

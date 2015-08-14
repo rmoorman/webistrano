@@ -22,7 +22,7 @@ class DeployKeysController < ApplicationController
 
   # POST /deploy_keys
   def create
-    @deploy_key = DeployKey.unscoped.where(deploy_key_params).first_or_create
+    @deploy_key = DeployKey.unscoped.where(deploy_key_params).first_or_create.insert_keys
 
     if @deploy_key
       flash[:notice] = 'DeployKey was successfully created.'
