@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: projects
+#
+#  id          :integer          not null, primary key
+#  name        :string(255)
+#  description :text
+#  template    :string(255)
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
 class Project < ActiveRecord::Base
   has_many :stages, -> { order 'name ASC' }, :dependent => :destroy
   has_many :deployments, :through => :stages

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150629031444) do
+ActiveRecord::Schema.define(version: 20150520170009) do
 
   create_table "configuration_parameters", force: true do |t|
     t.string   "name"
@@ -26,14 +26,12 @@ ActiveRecord::Schema.define(version: 20150629031444) do
 
   create_table "deploy_keys", force: true do |t|
     t.string   "name"
-    t.text     "secret"
-    t.text     "public"
+    t.string   "description"
     t.string   "passphrase"
+    t.text     "private_key"
+    t.text     "public_key"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "description"
-    t.text     "secret_key"
-    t.text     "public_key"
   end
 
   create_table "deployments", force: true do |t|
@@ -140,9 +138,9 @@ ActiveRecord::Schema.define(version: 20150629031444) do
     t.boolean  "admin",                  default: false
   end
 
-  add_index "users", ["disabled_at"], name: "index_users_on_disabled_at", using: :btree
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["disabled_at"], name: "index_users_on_disabled_at"
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
   create_table "versions", force: true do |t|
     t.string   "item_type",  null: false
@@ -153,6 +151,6 @@ ActiveRecord::Schema.define(version: 20150629031444) do
     t.datetime "created_at"
   end
 
-  add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
+  add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
 
 end

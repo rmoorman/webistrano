@@ -27,6 +27,9 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
+    annotate (2.6.10)
+      activerecord (>= 3.2, <= 4.3)
+      rake (~> 10.4)
     ansi (1.5.0)
     arel (5.0.1.20140414130214)
     bcrypt (3.1.10)
@@ -220,6 +223,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  annotate
   better_errors
   binding_of_caller
   capistrano (~> 3.2.1)
@@ -257,3 +261,6 @@ DEPENDENCIES
   uglifier (>= 1.3.0)
   unicorn
   whenever
+
+BUNDLED WITH
+   1.10.5
