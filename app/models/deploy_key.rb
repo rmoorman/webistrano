@@ -12,10 +12,39 @@
 #
 
 class DeployKey < ActiveRecord::Base
-  def insert_keys
-    k = SSHKey.generate
-    self.public_key = k.ssh_public_key
-    self.private_key = k.private_key
+  validate :correct_private_key
+
+  def update_keys(ssh_key)
+    self.public_key  = ssh_key.ssh_public_key
+    self.private_key = ssh_key.private_key
+
     save
+  end
+  def insert_keys(params, generate_option: nil)
+    if params.blank? || params[:private_key].blank?
+      if generate_option.blank?
+        k = SSHKey.generate(
+          comment: "deploy@webistrano_generated"
+        )
+      else
+        k = SSHKey.generate generate_option
+      end
+      update_keys k
+    else
+      begin
+        update_keys SSHKey.new params[:private_key]
+      rescue
+      end
+    end
+  end
+
+  private
+
+  def correct_private_key
+    begin
+      SSHKey.new private_key
+    rescue => ex
+      errors.add(:private_key, ex.message)
+    end
   end
 end

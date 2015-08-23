@@ -147,7 +147,7 @@ ja:
     name: "デプロイキー名"
     name2: "デプロイキー名 (どこのキーかわかる名前等)"
     description: "キーの説明"
-    secret_key: "秘密鍵"
+    private_key: "秘密鍵"
     public_key: "公開鍵"
     public_key2: "公開鍵 (相手サーバへ設置する鍵)"
     use_host: "利用先ホスト"

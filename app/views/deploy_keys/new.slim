@@ -1,15 +1,15 @@
 - content_for :breadcrumb do
   - breadcrumb_box do
-    = link_to t("hosts"), deploy_keys_path
+    = link_to t("deploy_keys"), deploy_keys_path
     span class="divider"
       | &raquo;
     = t("deploy_key.new")
 
+- flashed_errors(:deploy_key)
+
 - content_for :page_title do
   - @page_title = t("deploy_key.new")
   h2 #{@page_title}
-
-- flashed_errors(:deploy_key)
 
 div
   = form_for @deploy_key, :html => {:class => "form-horizontal"} do |f|
@@ -17,4 +17,3 @@ div
     .form-actions
       = f.submit t("deploy_key.create"), class: "btn btn-primary"
       = link_to t("deploy_key.back_to"), deploy_keys_path, :class => 'arrow_link ontheright'
-

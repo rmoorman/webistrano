@@ -11,9 +11,9 @@
 .control-group
   = form.label t("deploy_key.auto_generate"), :class => "control-label"
   .controls
-    = check_box :control, :auto_generate, { :class => "deploy_key_auto_generate", :checked => true }
+    = check_box :control, :auto_generate, { :class => "deploy_key_auto_generate", :checked => sshkey_generate_check(@deploy_key) }
 
-.deploy-key-input style="display:none"
+.deploy-key-input style="#{'display:none' if sshkey_generate_check(@deploy_key)}"
   .control-group
     = form.label t("deploy_key.private_key"), :class => "control-label"
     .controls
@@ -23,4 +23,3 @@
     = form.label t("deploy_key.public_key"), :class => "control-label"
     .controls
       = form.text_area :public_key, :class => "text_field", :style => "width:663px; height: 100px;"
-
